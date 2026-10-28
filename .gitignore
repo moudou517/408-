@@ -1,0 +1,25 @@
+# Python 第三方依赖（370 MB，用 requirements 重装即可，不上传）
+.pylibs/
+__pycache__/
+*.pyc
+
+# 中间产物：OCR 文本、答案提取、图片切片
+work/
+
+# pip / 临时目录残留
+.tmp/
+
+# 离线分享包（构建产物，由 tools/make_share.py 重新生成）
+分享/
+
+# 原始真题 PDF 与解析 PDF（版权原因不上传，放本地目录即可）
+/*.pdf
+2009-2025计算机408统考真题/
+
+# 与报告重复的一份 HTML（内容与 out/report.html 相同）
+out/408_真题分类与120分复习方案.html
+
+# 每次启动服务都会变化的小文件
+out/data/connect.json
+out/qr_quiz.png
+out/qr_index.png

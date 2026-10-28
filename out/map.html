@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>408 知识体系 · 可点进题库</title>
+<style>
+:root{
+  --paper:#f6f2e9;--panel:#fcfaf5;--ink:#1a1613;--ink2:#4a423a;--ink3:#8a7f72;
+  --rule:#e0d8c9;--rule2:#cfc4b0;--acc:#1f5fa8;
+  --DS:#1f5fa8;--CO:#a83226;--OS:#1c6b3c;--NET:#96650a;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",Georgia,serif;
+  --sans:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Segoe UI",sans-serif;
+  --mono:"Cascadia Mono",Consolas,"Courier New",monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:14.5px;line-height:1.7;
+  background-image:radial-gradient(rgba(160,140,110,.055) 1px,transparent 1px);background-size:3px 3px;}
+.bar{position:sticky;top:0;z-index:20;background:rgba(246,242,233,.95);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);padding:10px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.bar .ttl{font-family:var(--serif);font-size:16px;font-weight:600;letter-spacing:.4px}
+.bar .right{margin-left:auto;display:flex;gap:8px}
+.bar a{border:1px solid var(--rule2);background:#fff;border-radius:3px;font-size:12px;
+  padding:4px 9px;color:var(--ink2);text-decoration:none}
+.bar a:hover{border-color:var(--ink3);color:var(--ink)}
+.bar a.primary{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+main{max-width:980px;margin:0 auto;padding:30px 20px 110px}
+h1{font-family:var(--serif);font-size:29px;font-weight:600;letter-spacing:.8px;margin:2px 0 4px}
+.lede{color:var(--ink2);font-size:13.4px;margin:0 0 8px}
+.legend{font-size:11.8px;color:var(--ink3);font-family:var(--mono);margin:0 0 22px}
+.legend b{color:var(--ink)}
+
+.subj{margin:0 0 30px;border-left:3px solid var(--ac);padding-left:0}
+.subjhead{display:flex;align-items:baseline;gap:12px;padding:0 0 7px 14px;
+  border-bottom:2px solid var(--ac);margin-bottom:2px;flex-wrap:wrap}
+.subjhead h2{font-family:var(--serif);font-size:21px;font-weight:600;margin:0;color:var(--ac);
+  letter-spacing:.6px}
+.subjhead .m{font-family:var(--mono);font-size:11.5px;color:var(--ink3)}
+.subjhead .acts{margin-left:auto;display:flex;gap:6px}
+.mini{border:1px solid var(--rule2);background:#fff;border-radius:2px;font:inherit;
+  font-size:11.5px;padding:3px 8px;color:var(--ink2);cursor:pointer;text-decoration:none}
+.mini:hover{border-color:var(--ac);color:var(--ac)}
+.mini.solid{background:var(--ac);border-color:var(--ac);color:#fff}
+.mini.solid:hover{filter:brightness(1.1);color:#fff}
+
+.chap{padding:10px 0 4px 14px}
+.chaphead{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.chaphead h3{font-family:var(--serif);font-size:15.5px;font-weight:600;margin:0;letter-spacing:.3px}
+.chaphead .m{font-family:var(--mono);font-size:11px;color:var(--ink3)}
+.chaphead .acts{margin-left:auto;display:flex;gap:5px}
+
+.kp{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;
+  padding:5px 8px 5px 20px;border-bottom:1px solid var(--rule);position:relative}
+.kp:before{content:"";position:absolute;left:8px;top:50%;width:7px;height:1px;background:var(--rule2)}
+.kp:hover{background:rgba(255,255,255,.75)}
+.kp .name{font-size:13.3px;color:var(--ink);min-width:0}
+.kp .name .hot{font-family:var(--mono);font-size:10px;padding:0 4px;border-radius:2px;
+  margin-right:6px;vertical-align:1px}
+.hot.must{background:#fff3e0;color:#96590a;border:1px solid #f0d3a8}
+.hot.high{background:#eef3fb;color:#1f5fa8;border:1px solid #b9d2f5}
+.kp .cnt{font-family:var(--mono);font-size:11px;color:var(--ink3);white-space:nowrap}
+.kp .acts{display:flex;gap:4px;opacity:.55;transition:.13s}
+.kp:hover .acts{opacity:1}
+.kp .acts a{font-size:11px;padding:2px 7px;border:1px solid var(--rule2);border-radius:2px;
+  background:#fff;color:var(--ink2);text-decoration:none;white-space:nowrap}
+.kp .acts a:hover{background:var(--ac);border-color:var(--ac);color:#fff}
+.kp .acts a.dis{opacity:.35;pointer-events:none}
+.foot{margin-top:34px;padding-top:14px;border-top:1px solid var(--rule);
+  font-size:11.5px;color:var(--ink3);font-family:var(--mono)}
+@media (max-width:700px){
+  main{padding:16px 12px 90px}
+  .kp{grid-template-columns:1fr auto;grid-template-areas:"n c" "a a";row-gap:4px}
+  .kp .acts{grid-area:a;opacity:1;flex-wrap:wrap}
+  .kp .name{grid-area:n}.kp .cnt{grid-area:c}
+  .subjhead .acts{margin-left:0}
+  .chaphead .acts{margin-left:0}
+}
+@media print{.bar,.acts{display:none}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <span class="ttl">408 知识体系</span>
+  <span class="right">
+    <a href="index.html">入口</a>
+    <a href="browse.html">题库</a>
+    <a class="primary" href="quiz.html">刷选择题</a>
+    <a class="primary" href="bigq.html">刷大题</a>
+  </span>
+</div>
+<main>
+  <h1>知识体系 → 题库</h1>
+  <p class="lede">四科 → 章 → 知识点。每个知识点右侧可直接跳进对应题库：<b>刷选择</b>（有答案，即时判分）
+    或 <b>刷大题</b>（综合题，可看参考答案与思路）。</p>
+  <p class="legend">【必】= 18 年中 <b>≥14 年</b>考到　【高】= <b>10–13 年</b>　
+    数字 = 该知识点选择题 / 综合题数量</p>
+  <div id="tree"></div>
+  <div class="foot">数据来自本地 18 套真题 + 各年官方解析 · 选择题 686 道 / 综合题 119 道</div>
+</main>
+<script id="payload" type="application/json">{"subjects":[{"key":"DS","name":"数据结构","sel":184,"big":33,"avg":42.6,"chapters":[{"name":"绪论","title":"第一章 绪论","sel":13,"big":0,"avg":1.4,"kps":[{"id":"DS.1.2","name":"算法特性与时间复杂度/空间复杂度分析","ny":10,"sel":10,"big":0},{"id":"DS.1.1","name":"逻辑结构/存储结构与数据结构的定义","ny":2,"sel":3,"big":0}]},{"name":"线性表","title":"第二章 线性表","sel":6,"big":8,"avg":6.3,"kps":[{"id":"DS.2.2","name":"单链表/双链表/循环链表/静态链表","ny":8,"sel":5,"big":3},{"id":"DS.2.1","name":"顺序表（顺序存储）","ny":6,"sel":1,"big":5}]},{"name":"栈、队列和数组","title":"第三章 栈、队列和数组","sel":25,"big":2,"avg":3.9,"kps":[{"id":"DS.3.1","name":"栈的基本概念与进出栈序列","ny":11,"sel":11,"big":1},{"id":"DS.3.2","name":"队列基本概念与循环队列判空判满","ny":6,"sel":5,"big":1},{"id":"DS.3.5","name":"多维数组与特殊矩阵压缩存储","ny":5,"sel":5,"big":0},{"id":"DS.3.4","name":"栈的应用（表达式/lower/递归/括号匹配）","ny":4,"sel":4,"big":0}]},{"name":"串","title":"第四章 串","sel":3,"big":0,"avg":0.3,"kps":[{"id":"DS.4.1","name":"KMP 模式匹配与 next/nextval 数组","ny":3,"sel":3,"big":0}]},{"name":"树与二叉树","title":"第五章 树与二叉树","sel":57,"big":7,"avg":11.4,"kps":[{"id":"DS.5.3","name":"二叉树遍历（先/中/后/层次）与序列还原","ny":12,"sel":12,"big":1},{"id":"DS.5.6","name":"哈夫曼树与哈夫曼编码","ny":11,"sel":10,"big":2},{"id":"DS.5.1","name":"树/二叉树性质与结点度数计算","ny":9,"sel":8,"big":1},{"id":"DS.5.9","name":"二叉排序树（BST）","ny":7,"sel":5,"big":1},{"id":"DS.5.8","name":"堆（大根堆/小根堆）及其调整与建堆","ny":7,"sel":5,"big":1},{"id":"DS.5.10","name":"平衡二叉树（AVL）与调整","ny":7,"sel":7,"big":0},{"id":"DS.5.5","name":"树的存储/森林与二叉树转换/树与森林遍历","ny":6,"sel":6,"big":0},{"id":"DS.5.2","name":"二叉树的顺序存储与链式存储","ny":5,"sel":3,"big":1},{"id":"DS.5.4","name":"线索二叉树的基本概念与构造","ny":3,"sel":1,"big":0}]},{"name":"图","title":"第六章 图","sel":33,"big":10,"avg":10.1,"kps":[{"id":"DS.6.1","name":"图的基本概念（度/路径/连通/生成树/回路）","ny":9,"sel":9,"big":1},{"id":"DS.6.2","name":"邻接矩阵/邻接表/十字链表/邻接多重表","ny":6,"sel":2,"big":4},{"id":"DS.6.4","name":"最小生成树（Prim/Kruskal）","ny":6,"sel":4,"big":2},{"id":"DS.6.3","name":"DFS 与 BFS 遍历（含生成树/复杂度）","ny":6,"sel":6,"big":0},{"id":"DS.6.5","name":"最短路径（Dijkstra/Floyd/BFS）","ny":5,"sel":4,"big":1},{"id":"DS.6.6","name":"拓扑排序与AOV网","ny":5,"sel":4,"big":1},{"id":"DS.6.7","name":"关键路径与AOE网","ny":5,"sel":4,"big":1}]},{"name":"查找","title":"第七章 查找","sel":21,"big":3,"avg":4.4,"kps":[{"id":"DS.7.4","name":"B树与B+树","ny":10,"sel":10,"big":0},{"id":"DS.7.6","name":"散列表构造、冲突处理与查找效率","ny":9,"sel":7,"big":2},{"id":"DS.7.3","name":"折半（二分）查找与判定树","ny":4,"sel":2,"big":1},{"id":"DS.7.1","name":"查找基本概念与平均查找长度 ASL","ny":1,"sel":1,"big":0},{"id":"DS.7.2","name":"顺序查找与分块查找","ny":1,"sel":1,"big":0}]},{"name":"排序","title":"第八章 排序","sel":26,"big":3,"avg":4.8,"kps":[{"id":"DS.8.6","name":"二路归并排序","ny":6,"sel":5,"big":1},{"id":"DS.8.1","name":"排序稳定性/内外排序/比较次数与移动次数","ny":6,"sel":5,"big":1},{"id":"DS.8.4","name":"起泡排序与快速排序","ny":6,"sel":6,"big":0},{"id":"DS.8.2","name":"直接插入排序与折半插入排序","ny":5,"sel":4,"big":0},{"id":"DS.8.9","name":"排序算法综合比较与选择","ny":2,"sel":3,"big":0},{"id":"DS.8.7","name":"基数排序","ny":2,"sel":2,"big":0},{"id":"DS.8.8","name":"外部排序与多路归并/败者树","ny":1,"sel":0,"big":1},{"id":"DS.8.3","name":"希尔排序","ny":1,"sel":1,"big":0}]}]},{"key":"CO","name":"计算机组成原理","sel":192,"big":38,"avg":44.5,"chapters":[{"name":"计算机系统概述","title":"第一章 系统概述","sel":18,"big":0,"avg":2.1,"kps":[{"id":"CO.1.1","name":"计算机系统组成与存储程序工作方式","ny":9,"sel":10,"big":0},{"id":"CO.1.2","name":"性能指标（CPI/主频/MIPS/MFLOPS/加速比）","ny":8,"sel":8,"big":0}]},{"name":"数据的表示和运算","title":"第二章 数据表示与运算","sel":41,"big":5,"avg":7.8,"kps":[{"id":"CO.2.4","name":"IEEE 754 浮点数表示与规格化","ny":15,"sel":17,"big":0},{"id":"CO.2.1","name":"进制转换与定点数编码（原/反/补/移码）","ny":14,"sel":14,"big":2},{"id":"CO.2.2","name":"加减运算/溢出判断/标志位（ZF/SF/OF/CF）","ny":6,"sel":6,"big":1},{"id":"CO.2.3","name":"乘法与除法运算（阵列乘法器/除法器）","ny":3,"sel":1,"big":2},{"id":"CO.2.6","name":"数据对齐/大端小端/边界对齐存储","ny":3,"sel":3,"big":0}]},{"name":"存储器层次结构","title":"第三章 存储器层次结构","sel":43,"big":17,"avg":14.2,"kps":[{"id":"CO.3.5","name":"Cache 基本原理与映射方式（直接/全相联/组相联）","ny":16,"sel":13,"big":8},{"id":"CO.3.7","name":"页式虚拟存储器/页表/TLB/地址转换","ny":11,"sel":8,"big":7},{"id":"CO.3.2","name":"主存容量扩展与CPU连接（字扩展/位扩展）","ny":10,"sel":12,"big":0},{"id":"CO.3.1","name":"存储器分类与层次化存储结构","ny":6,"sel":7,"big":0},{"id":"CO.3.4","name":"磁盘存储器与固态硬盘（SSD）","ny":4,"sel":3,"big":1},{"id":"CO.3.3","name":"多模块存储器（低位交叉/高位交叉）","ny":1,"sel":0,"big":1}]},{"name":"指令系统","title":"第四章 指令系统","sel":14,"big":4,"avg":4.1,"kps":[{"id":"CO.4.2","name":"寻址方式与有效地址计算","ny":6,"sel":6,"big":0},{"id":"CO.4.1","name":"指令格式与扩展操作码","ny":5,"sel":3,"big":2},{"id":"CO.4.4","name":"高级语言到机器级代码（选择/循环/过程调用/栈帧）","ny":4,"sel":2,"big":2},{"id":"CO.4.3","name":"CISC 与 RISC","ny":3,"sel":3,"big":0}]},{"name":"中央处理器","title":"第五章 中央处理器","sel":55,"big":9,"avg":11.9,"kps":[{"id":"CO.5.4","name":"异常与中断的分类、检测与响应","ny":17,"sel":18,"big":0},{"id":"CO.5.1","name":"CPU 结构与指令执行过程","ny":13,"sel":12,"big":3},{"id":"CO.5.5","name":"指令流水线性能与结构/数据/控制冒险","ny":12,"sel":12,"big":1},{"id":"CO.5.2","name":"数据通路的功能和基本结构","ny":8,"sel":7,"big":5},{"id":"CO.5.3","name":"硬布线控制器与微程序控制器","ny":5,"sel":5,"big":0},{"id":"CO.5.6","name":"SISD/SIMD/MIMD/硬件多线程/多核/SMP","ny":1,"sel":1,"big":0}]},{"name":"总线与输入输出","title":"第六章 总线与 I/O","sel":21,"big":3,"avg":4.4,"kps":[{"id":"CO.6.1","name":"总线概念、组成与性能指标/事务与定时","ny":11,"sel":11,"big":0},{"id":"CO.6.4","name":"DMA 方式（控制器/传送过程/与中断比较）","ny":5,"sel":5,"big":0},{"id":"CO.6.3","name":"程序查询方式与程序中断方式","ny":4,"sel":1,"big":3},{"id":"CO.6.2","name":"I/O 接口与 I/O 端口编址","ny":4,"sel":4,"big":0}]}]},{"key":"OS","name":"操作系统","sel":173,"big":30,"avg":32.7,"chapters":[{"name":"操作系统概述","title":"第一章 概述","sel":35,"big":3,"avg":5.2,"kps":[{"id":"OS.1.2","name":"内核态/用户态与特权指令、系统调用","ny":14,"sel":17,"big":1},{"id":"OS.1.1","name":"OS 基本概念/功能/发展历程/结构","ny":10,"sel":12,"big":0},{"id":"OS.1.3","name":"中断异常处理/链接装入/内存映像","ny":6,"sel":6,"big":2}]},{"name":"进程管理","title":"第二章 进程管理","sel":57,"big":13,"avg":12.7,"kps":[{"id":"OS.2.1","name":"进程/线程概念与状态转换","ny":17,"sel":30,"big":0},{"id":"OS.2.3","name":"CPU 调度算法（FCFS/SJF/HRRN/RR/优先级/多级反馈）","ny":11,"sel":11,"big":1},{"id":"OS.2.6","name":"信号量机制与 PV 操作","ny":8,"sel":2,"big":6},{"id":"OS.2.7","name":"经典同步问题（生产者-消费者/读者写者/哲学家/理发师）","ny":7,"sel":3,"big":4},{"id":"OS.2.5","name":"同步互斥基本概念与临界区管理（软件/硬件方法）","ny":6,"sel":4,"big":2},{"id":"OS.2.9","name":"死锁的必要条件/预防/避免（银行家算法）/检测解除","ny":6,"sel":4,"big":0},{"id":"OS.2.2","name":"进程间通信（共享内存/消息传递/管道/信号）","ny":1,"sel":1,"big":0},{"id":"OS.2.4","name":"上下文切换机制","ny":1,"sel":1,"big":0},{"id":"OS.2.8","name":"管程与条件变量","ny":1,"sel":1,"big":0}]},{"name":"内存管理","title":"第三章 内存管理","sel":31,"big":6,"avg":5.9,"kps":[{"id":"OS.3.2","name":"页式/段式/段页式管理","ny":11,"sel":10,"big":3},{"id":"OS.3.3","name":"虚拟内存基本概念与请求页式管理","ny":7,"sel":8,"big":1},{"id":"OS.3.4","name":"页面置换算法（OPT/FIFO/LRU/CLOCK）与抖动","ny":6,"sel":5,"big":2},{"id":"OS.3.1","name":"连续分配管理方式与内存管理基本概念","ny":6,"sel":6,"big":0},{"id":"OS.3.5","name":"页框分配与内存映射文件","ny":1,"sel":2,"big":0}]},{"name":"文件管理","title":"第四章 文件管理","sel":30,"big":7,"avg":6.2,"kps":[{"id":"OS.4.1","name":"文件概念/元数据/inode/文件操作","ny":13,"sel":16,"big":2},{"id":"OS.4.3","name":"文件物理结构（连续/链接/索引分配）与混合索引","ny":9,"sel":4,"big":5},{"id":"OS.4.4","name":"目录/树形目录/硬链接与软链接","ny":4,"sel":4,"big":0},{"id":"OS.4.5","name":"文件系统布局/外存空闲空间管理（位示图/成组链接）","ny":4,"sel":4,"big":0},{"id":"OS.4.6","name":"虚拟文件系统与文件系统挂载","ny":2,"sel":2,"big":0}]},{"name":"输入输出管理","title":"第五章 I/O 管理","sel":20,"big":1,"avg":2.7,"kps":[{"id":"OS.5.3","name":"磁盘结构与磁盘调度算法（FCFS/SSTF/SCAN/CSCAN）","ny":7,"sel":6,"big":1},{"id":"OS.5.1","name":"I/O 控制方式与 I/O 软件层次结构","ny":7,"sel":8,"big":0},{"id":"OS.5.2","name":"缓冲区管理与设备分配/SPOOLing","ny":5,"sel":5,"big":0},{"id":"OS.5.4","name":"固态硬盘（SSD）特性与磨损均衡","ny":1,"sel":1,"big":0}]}]},{"key":"NET","name":"计算机网络","sel":137,"big":18,"avg":25.2,"chapters":[{"name":"计算机网络概述","title":"第一章 网络概述","sel":28,"big":1,"avg":3.6,"kps":[{"id":"NET.1.2","name":"分层结构/OSI 与 TCP/IP 模型/协议服务接口","ny":15,"sel":21,"big":0},{"id":"NET.1.1","name":"网络定义/组成/分类与性能指标","ny":7,"sel":7,"big":1}]},{"name":"物理层","title":"第二章 物理层","sel":16,"big":0,"avg":1.8,"kps":[{"id":"NET.2.1","name":"信道/码元/波特/速率等基本概念与编码调制","ny":8,"sel":8,"big":0},{"id":"NET.2.3","name":"电路交换/报文交换/分组交换与数据报/虚电路","ny":4,"sel":4,"big":0},{"id":"NET.2.4","name":"传输介质/中继器/集线器","ny":3,"sel":3,"big":0},{"id":"NET.2.2","name":"奈奎斯特定理与香农定理","ny":1,"sel":1,"big":0}]},{"name":"数据链路层","title":"第三章 数据链路层","sel":30,"big":4,"avg":5.4,"kps":[{"id":"NET.3.5","name":"以太网/IEEE 802.3/802.11/VLAN/PPP","ny":10,"sel":8,"big":2},{"id":"NET.3.2","name":"停止等待/GBN/SR 与滑动窗口","ny":10,"sel":9,"big":1},{"id":"NET.3.4","name":"随机访问（ALOHA/CSMA/CSMA-CD/CSMA-CA）","ny":8,"sel":8,"big":1},{"id":"NET.3.1","name":"组帧/检错编码（奇偶/CRC）/纠错编码（海明码）","ny":3,"sel":3,"big":0},{"id":"NET.3.6","name":"以太网交换机与工作原理","ny":2,"sel":2,"big":0},{"id":"NET.3.3","name":"信道划分（FDM/TDM/WDM/CDM）与码分多址","ny":1,"sel":0,"big":0}]},{"name":"网络层","title":"第四章 网络层","sel":29,"big":8,"avg":7.6,"kps":[{"id":"NET.4.4","name":"IPv4 地址/NAT/子网划分/子网掩码/CIDR/路由聚集","ny":13,"sel":15,"big":4},{"id":"NET.4.8","name":"路由器的组成/路由表与分组转发","ny":6,"sel":4,"big":2},{"id":"NET.4.2","name":"静态/动态路由与距离向量/链路状态算法","ny":6,"sel":4,"big":1},{"id":"NET.4.5","name":"ARP/DHCP/ICMP 协议","ny":3,"sel":2,"big":1},{"id":"NET.4.3","name":"IPv4 分组格式与分片","ny":3,"sel":3,"big":0},{"id":"NET.4.1","name":"网络层功能/路由与转发/SDN/拥塞控制","ny":1,"sel":1,"big":0}]},{"name":"传输层","title":"第五章 传输层","sel":23,"big":3,"avg":4.5,"kps":[{"id":"NET.5.3","name":"TCP 段格式/连接管理（三次握手四次挥手）","ny":14,"sel":18,"big":3},{"id":"NET.5.1","name":"传输层功能/端口/复用分用","ny":3,"sel":3,"big":0},{"id":"NET.5.5","name":"TCP 流量控制与拥塞控制","ny":2,"sel":1,"big":0},{"id":"NET.5.2","name":"UDP 数据报与校验","ny":1,"sel":1,"big":0}]},{"name":"应用层","title":"第六章 应用层","sel":11,"big":2,"avg":2.3,"kps":[{"id":"NET.6.2","name":"FTP/SMTP/POP3/IMAP/MIME","ny":7,"sel":6,"big":1},{"id":"NET.6.1","name":"C/S 与 P2P 模型、DNS 域名解析","ny":5,"sel":3,"big":1},{"id":"NET.6.3","name":"WWW 与 HTTP 协议","ny":2,"sel":2,"big":0}]}]}]}</script>
+<script>
+(function(){
+  const D = JSON.parse(document.getElementById('payload').textContent);
+  const S = D.subjects, ACC = {DS:'#1f5fa8',CO:'#a83226',OS:'#1c6b3c',NET:'#96650a'};
+  const box = document.getElementById('tree');
+  const esc = s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  S.forEach(sb=>{
+    const sec = document.createElement('section');
+    sec.className = 'subj';
+    sec.style.setProperty('--ac', ACC[sb.key]);
+    sec.innerHTML = `
+      <div class="subjhead">
+        <h2>${esc(sb.name)}</h2>
+        <span class="m">选择 ${sb.sel} · 综合 ${sb.big} · 年均 ${sb.avg} 分</span>
+        <span class="acts">
+          <a class="mini solid" href="quiz.html?subj=${sb.key}">刷本科选择题</a>
+          <a class="mini" href="browse.html#subj=${sb.key}">看全部题</a>
+        </span>
+      </div>` +
+      sb.chapters.map(ch=>`
+        <div class="chap">
+          <div class="chaphead">
+            <h3>${esc(ch.title)}</h3>
+            <span class="m">选择 ${ch.sel} · 综合 ${ch.big} · 年均 ${ch.avg} 分</span>
+            <span class="acts">
+              <a class="mini solid" href="quiz.html?chap=${encodeURIComponent(sb.key+'|'+ch.name)}">刷本章</a>
+              <a class="mini" href="bigq.html?chap=${encodeURIComponent(sb.key+'|'+ch.name)}">刷本章大题</a>
+            </span>
+          </div>` +
+          ch.kps.map(k=>{
+            const hot = k.ny>=14 ? '<span class="hot must">必</span>'
+                      : (k.ny>=10 ? '<span class="hot high">高</span>' : '');
+            const selDis = k.sel ? '' : ' dis';
+            const bigDis = k.big ? '' : ' dis';
+            return `<div class="kp">
+              <span class="name">${hot}${esc(k.name)}</span>
+              <span class="cnt">${k.sel} / ${k.big}</span>
+              <span class="acts">
+                <a class="${selDis.trim()}" href="quiz.html?kp=${encodeURIComponent(k.id)}">刷选择</a>
+                <a class="${bigDis.trim()}" href="bigq.html?kp=${encodeURIComponent(k.id)}">刷大题</a>
+                <a href="browse.html#kp=${encodeURIComponent(k.id)}">看题</a>
+              </span></div>`;
+          }).join('') +
+        `</div>`).join('');
+    box.appendChild(sec);
+  });
+})();
+</script>
+</body>
+</html>

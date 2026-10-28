@@ -1,0 +1,4 @@
+# 保持仓库内容与工作区字节完全一致。
+# Windows 上 core.autocrlf=true 会把 CRLF 规范化成 LF，
+# 导致 blob 的 sha 与实际文件不同（.bat 也需要 CRLF 才能正常执行）。
+* -text
