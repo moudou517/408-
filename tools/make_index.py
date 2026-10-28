@@ -145,8 +145,8 @@ TEMPLATE = """<!doctype html>
 <div class="mask" id="qrMask">
   <div class="modal">
     <h3>平板连接</h3>
-    <p>平板与电脑连同一 Wi-Fi，相机对着二维码扫一下；或手输下面的地址。</p>
-    <img id="qrImg" src="qr_quiz.png" alt="二维码">
+    <p id="qrTip">平板与电脑连同一 Wi-Fi，相机对着二维码扫一下；或手输下面的地址。</p>
+    <img id="qrImg" src="qr_quiz.png" alt="二维码" onerror="qrOff()">
     <span class="url" id="qrUrl">__URL__</span>
     <div class="row">
       <button id="qrCopy">复制地址</button>
@@ -156,6 +156,15 @@ TEMPLATE = """<!doctype html>
 </div>
 
 <script>
+/* 静态副本（GitHub Pages / 直接拷走）没有 qr_quiz.png 与 connect.json，
+   降级成文字说明，避免出现坏图和写死的旧 IP */
+window.qrOff=function(){
+  var i=document.getElementById('qrImg'); if(i){ i.style.display='none'; }
+  var t=document.getElementById('qrTip');
+  if(t){ t.textContent='当前是静态副本，没有二维码；平板连接需要在本机运行 tools/serve.py。'; }
+  var u=document.getElementById('qrUrl');
+  if(u){ u.textContent='本机运行：python tools/serve.py 8000'; }
+};
 (function(){
   var open=document.getElementById('qrOpen'), mask=document.getElementById('qrMask');
   var img=document.getElementById('qrImg');
